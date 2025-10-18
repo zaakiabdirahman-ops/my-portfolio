@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zakariye | AI & ML Engineer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: url('https://www.transparenttextures.com/patterns/dark-mosaic.png'),
+                  linear-gradient(135deg, #020d1e, #041b36);
+      color: #e8ecf2;
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER & NAVBAR ===== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 8%;
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      background: linear-gradient(90deg, #00dbde, #fc00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #e8ecf2;
+      font-weight: 500;
+      position: relative;
+      padding: 0.5rem;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background: linear-gradient(90deg, #00dbde, #fc00ff);
+      transition: width 0.4s;
+    }
+
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: #00dbde;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      padding: 6rem 10%;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      min-height: 80vh;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #00dbde, #fc00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .about {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      text-align: left;
+    }
+
+    .about-left {
+      flex: 1;
+      color: #d0d4da;
+    }
+
+    .about-left h2 {
+      color: #00dbde;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-left p {
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+
+    .about-right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .about-right img {
+      width: 300px;
+      height: 300px;
+      border-radius: 25px;
+      border: 4px solid #00dbde;
+      box-shadow: 0 0 35px #00dbde, 0 0 60px #fc00ff;
+      object-fit: cover;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    /* ===== GRID SECTIONS ===== */
+    .skills-grid, .cert-grid, .services-grid {
+      display: grid;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cert-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skill-card, .cert-card, .service-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 2rem;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    }
+
+    .skill-card:hover, .cert-card:hover, .service-card:hover {
+      transform: translateY(-8px);
+      background: linear-gradient(145deg, rgba(0,219,222,0.15), rgba(252,0,255,0.15));
+      box-shadow: 0 0 25px #00dbde, 0 0 40px #fc00ff;
+    }
+
+    .skill-card i, .cert-card i, .service-card i {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+      color: #00dbde;
+    }
+
+    /* ===== EXPERIENCE SECTION ===== */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background: linear-gradient(180deg, #00dbde, #fc00ff);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    .exp-card {
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      width: 45%;
+      position: relative;
+      color: #e8ecf2;
+      margin: 1rem 0;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .exp-card.left { left: 0; }
+    .exp-card.right { left: 55%; }
+
+    .exp-card h3 { color: #00dbde; margin-bottom: 0.5rem; }
+
+    /* ===== CONTACT SECTION ===== */
+    .contact .socials {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact a {
+      font-size: 2rem;
+      transition: transform 0.3s;
+    }
+
+    .contact a:hover {
+      transform: scale(1.2);
+    }
+
+    .fa-whatsapp { color: #25D366; }
+    .fa-facebook { color: #1877F2; }
+    .fa-instagram { color: #E4405F; }
+    .fa-linkedin { color: #0077B5; }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+      color: #aaa;
+      background: rgba(0,0,0,0.6);
+      margin-top: 2rem;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .about { flex-direction: column; text-align: center; }
+      .skills-grid, .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .cert-grid { grid-template-columns: 1fr; }
+      .exp-card { width: 80%; left: 10% !important; }
+      nav ul { flex-wrap: wrap; gap: 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Zakariye — AI & ML Engineer</h1>
+    <nav>
+      <ul>
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="section about">
+    <div class="about-left">
+      <h2>About Me</h2>
+      <p>
+        I’m <strong>Zakariye</strong>, a passionate <strong>Artificial Intelligence & Machine Learning Engineer</strong> specializing in predictive modeling, intelligent system design, and deployment. I build smart applications that transform data into impactful AI solutions.
+      </p>
+    </div>
+    <div class="about-right">
+      <img src="/Users/user/Desktop/portfolio/images/profile1.png" alt="Zakariye Photo">
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section skills">
+    <h2 class="gradient-text">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><i class="fa-brands fa-python"></i><p>Python</p></div>
+      <div class="skill-card"><i class="fa-solid fa-brain"></i><p>Machine Learning</p></div>
+      <div class="skill-card"><i class="fa-solid fa-robot"></i><p>Deep Learning</p></div>
+      <div class="skill-card"><i class="fa-solid fa-chart-line"></i><p>Data Analysis</p></div>
+      <div class="skill-card"><i class="fa-solid fa-language"></i><p>NLP</p></div>
+      <div class="skill-card"><i class="fa-solid fa-database"></i><p>SQL</p></div>
+      <div class="skill-card"><i class="fa-brands fa-html5"></i><p>HTML5</p></div>
+      <div class="skill-card"><i class="fa-brands fa-css3-alt"></i><p>CSS3</p></div>
+      <div class="skill-card"><i class="fa-brands fa-react"></i><p>React</p></div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATES -->
+  <section id="certificates" class="section certificates">
+    <h2 class="gradient-text">Certificates</h2>
+    <div class="cert-grid">
+      <div class="cert-card"><i class="fa-solid fa-award"></i><p>AI Fundamentals</p></div>
+      <div class="cert-card"><i class="fa-solid fa-certificate"></i><p>Machine Learning Specialization</p></div>
+      <div class="cert-card"><i class="fa-solid fa-graduation-cap"></i><p>Deep Learning Certificate</p></div>
+      <div class="cert-card"><i class="fa-solid fa-cloud"></i><p>Cloud AI Deployment</p></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section services">
+    <h2 class="gradient-text">Services</h2>
+    <div class="services-grid">
+      <div class="service-card"><i class="fa-solid fa-laptop-code"></i><p>AI App Development</p></div>
+      <div class="service-card"><i class="fa-solid fa-microchip"></i><p>ML Modeling</p></div>
+      <div class="service-card"><i class="fa-solid fa-chart-bar"></i><p>Data Visualization</p></div>
+      <div class="service-card"><i class="fa-solid fa-language"></i><p>Chatbot Creation</p></div>
+      <div class="service-card"><i class="fa-solid fa-cloud"></i><p>AI Deployment</p></div>
+      <div class="service-card"><i class="fa-solid fa-brain"></i><p>Predictive Analytics</p></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section experience">
+    <h2 class="gradient-text">Experience</h2>
+    <div class="timeline">
+      <div class="exp-card left">
+        <h3>AI Research Intern</h3>
+        <span>2024 - Present</span>
+        <p>Worked on deep learning and NLP models focused on human activity recognition and intelligent system deployment.</p>
+      </div>
+      <div class="exp-card right">
+        <h3>Machine Learning Developer</h3>
+        <span>2023 - 2024</span>
+        <p>Developed predictive systems using Flask and TensorFlow, improving model accuracy and efficiency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact">
+    <h2 class="gradient-text">Get in Touch</h2>
+    <div class="socials">
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Zakariye | AI & ML Engineer Portfolio</p>
+  </footer>
+
+  <script>
+    // Active Menu Highlight on Scroll
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href").includes(current)) {
+          link.classList.add("active");
+        }
+      });
+    });
+  </script>
+</body>
+</html>
